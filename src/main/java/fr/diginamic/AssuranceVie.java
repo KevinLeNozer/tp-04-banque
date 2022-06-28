@@ -1,8 +1,10 @@
 package fr.diginamic;
 
+import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.util.Set;
 
+@Entity
 public class AssuranceVie extends Compte{
     private LocalDate dateFin;
     private double taux;

@@ -7,6 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Compte")
 public class Compte {
     @Id

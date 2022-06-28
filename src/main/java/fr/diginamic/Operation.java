@@ -8,6 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Operation")
 public class Operation {
     @Id

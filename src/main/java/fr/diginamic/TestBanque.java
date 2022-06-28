@@ -29,8 +29,16 @@ public class TestBanque {
         Compte compte = new Compte("0154870", 2578d, clients, operations);
         operation.setCompte(compte);
         et.persist(banque);
-        et.persist(compte);
 
+        LivretA compteLivretA = new LivretA("5154", 8054d, clients, operations, 1.5d);
+        et.persist(compteLivretA);
+
+        LocalDate dateVirement = LocalDate.of(2020, 4, 14);
+        Virement operationVirement = new Virement(dateVirement, 500d, "Virement", "Kevin");
+        operationVirement.setCompte(compte);
+        operations.add(operationVirement);
+        et.persist(operationVirement);
+        et.persist(compte);
         et.getTransaction().commit();
     }
 }

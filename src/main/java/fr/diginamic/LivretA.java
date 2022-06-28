@@ -1,7 +1,10 @@
 package fr.diginamic;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Set;
 
+@Entity
 public class LivretA extends Compte{
     private double taux;
 
