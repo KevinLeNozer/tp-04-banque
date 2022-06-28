@@ -22,7 +22,7 @@ public class Client {
     @Embedded
     private Adresse adresse;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "banque_id")
     private Banque banque;
 

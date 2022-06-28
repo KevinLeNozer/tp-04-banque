@@ -1,5 +1,7 @@
 package fr.diginamic;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
@@ -9,6 +11,8 @@ import java.util.Set;
 @Table(name = "Operation")
 public class Operation {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "seqOperation", strategy = "increment")
     private int id;
     @Column(name = "DATE")
     private LocalDate date;
@@ -17,8 +21,8 @@ public class Operation {
     @Column(name = "MOTIF", length = 255, nullable = false, unique = false)
     private String motif;
 
-    @ManyToOne
-    @JoinColumn(name = "compte_id")
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "numeroCompte")
     private Compte compte;
 
     public Compte getCompte() {

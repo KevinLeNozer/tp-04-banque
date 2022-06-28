@@ -16,10 +16,6 @@ public class Banque {
     @Column(name = "nomBanque", length = 50, nullable = false, unique = false)
     private String nom;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Banque client;
-
     @OneToMany(mappedBy = "banque", orphanRemoval = true)
     private Set<Client> clients = new LinkedHashSet<>();
 
@@ -31,13 +27,6 @@ public class Banque {
         this.clients = clients;
     }
 
-    public Banque getClient() {
-        return client;
-    }
-
-    public void setClient(Banque client) {
-        this.client = client;
-    }
 
     public Banque(int id) {
         this.id = id;
@@ -68,7 +57,6 @@ public class Banque {
         final StringBuilder sb = new StringBuilder("Banque{");
         sb.append("id=").append(id);
         sb.append(", nom='").append(nom).append('\'');
-        sb.append(", client=").append(client);
         sb.append(", clients=").append(clients);
         sb.append('}');
         return sb.toString();
