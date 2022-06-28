@@ -6,10 +6,6 @@ import javax.persistence.*;
 
 @Embeddable
 public class Adresse {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GenericGenerator(name = "seqAdresse", strategy = "increment")
-    private int id;
     @Column(name = "NUMERO")
     private int numero;
     @Column(name = "RUE", length = 60, nullable = false, unique = false)
@@ -27,14 +23,6 @@ public class Adresse {
         this.rue = rue;
         this.codePostal = codePostal;
         this.ville = ville;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getNumero() {
@@ -72,7 +60,6 @@ public class Adresse {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Adresse{");
-        sb.append("id=").append(id);
         sb.append(", numero=").append(numero);
         sb.append(", rue='").append(rue).append('\'');
         sb.append(", codePostal=").append(codePostal);

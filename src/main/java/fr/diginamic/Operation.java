@@ -1,10 +1,9 @@
 package fr.diginamic;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Operation")
@@ -17,6 +16,18 @@ public class Operation {
     private double montant;
     @Column(name = "MOTIF", length = 255, nullable = false, unique = false)
     private String motif;
+
+    @ManyToOne
+    @JoinColumn(name = "compte_id")
+    private Compte compte;
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
 
     public Operation() {
     }
@@ -66,6 +77,7 @@ public class Operation {
         sb.append(", date=").append(date);
         sb.append(", montant=").append(montant);
         sb.append(", motif='").append(motif).append('\'');
+        sb.append(", compte=").append(compte);
         sb.append('}');
         return sb.toString();
     }

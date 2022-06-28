@@ -34,7 +34,6 @@ public class Client {
         this.banque = banque;
     }
 
-
     public Client() {
     }
 

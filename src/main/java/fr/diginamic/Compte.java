@@ -20,7 +20,7 @@ public class Compte {
 
     @ManyToMany
     @JoinTable(name = "Compte_clients",
-            joinColumns = @JoinColumn(name = "compte_null"),
+            joinColumns = @JoinColumn(name = "compte_client"),
             inverseJoinColumns = @JoinColumn(name = "clients_id"))
     private Set<Client> clients = new LinkedHashSet<>();
 
@@ -32,9 +32,7 @@ public class Compte {
     public void setClients(Set<Client> clients) {
         this.clients = clients;
     }
-
-
-
+    
     public Compte() {
     }
 
